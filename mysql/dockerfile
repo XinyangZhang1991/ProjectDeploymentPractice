@@ -1,4 +1,4 @@
-FROM mysql:lastest
+FROM mysql:latest
 LABEL maintainer="eyebrow0524@gmail.com"
 LABEL version="1.0"
 LABEL description="futureloan deploy"
