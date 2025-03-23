@@ -1,27 +1,35 @@
+version: '3.8'
+
 services:
   tomcat:
     build:
-      context: ./tomcat
+      context: ./tomcat  # Build from the Tomcat Dockerfile in the ./tomcat folder
     ports:
-      - 8013:8080
+      - "8013:8080"  # Exposing Tomcat on port 8013
     depends_on:
-      - mysql  # 等待数据库服务启动
+      - mysql  # Wait for the MySQL container to be ready
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: futureloan_db   # This should match the database created by the MySQL container
+      DB_USER: root
+      DB_PASSWORD: susanzxy910524
     networks:
       - app-network
 
   mysql:
     build:
-      context: ./mysql
+      context: ./mysql  # Build from the MySQL Dockerfile in the ./mysql folder
     ports:
-      - 3307:3306
+      - "3307:3306"   #This maps MySQL's internal port (3306) to external port 3307 on the host
     networks:
       - app-network
     volumes:
-      - ./mysql/mysql-data:/var/lib/mysql
+      - ./mysql/mysql-data:/var/lib/mysql  # Persistent storage for MySQL data
 
 volumes:
-  mysql-data:
+  mysql-data:  # This volume will persist MySQL data
 
 networks:
   app-network:
-    driver: bridge
+    driver: bridge  # Creating a custom bridge network
