@@ -1,9 +1,9 @@
-FROM mysql:5.7
-LABEL maintainer="waiwaioba@qq.com"
+FROM mysql:lastest
+LABEL maintainer="eyebrow0524@gmail.com"
 LABEL version="1.0"
 LABEL description="futureloan deploy"
 # 设置 MySQL root 密码
-ENV MYSQL_ROOT_PASSWORD=Lemon123456!
+ENV MYSQL_ROOT_PASSWORD=susanzxy910524
 # 拷贝初始化SQL到指定目录下,这个目录在mysql容器启动的时候就会初始化运行
 # 通过init.sql可以创建数据库，并且初始化好数据库表结构
 COPY init.sql /docker-entrypoint-initdb.d/
