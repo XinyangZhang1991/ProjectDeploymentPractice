@@ -1,0 +1,8 @@
+FROM tomcat:8.5.40
+LABEL maintainer="waiwaioba@qq.com"
+LABEL version="1.0"
+LABEL description="futureloan deploy"
+# 拷贝项目包到tomcat的webapps目录下
+COPY futureloan.war /usr/local/tomcat/webapps/
+# 启动tomcat
+CMD ["catalina.sh", "run"]
