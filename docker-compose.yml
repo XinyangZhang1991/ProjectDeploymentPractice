@@ -3,7 +3,7 @@ services:
     build:
       context: ./tomcat
     ports:
-      - 8090:8080
+      - 8013:8080
     depends_on:
       - mysql  # 等待数据库服务启动
     networks:
